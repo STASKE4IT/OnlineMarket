@@ -8,14 +8,15 @@ var splide = new Splide(".splide.splide2", {
   perPage: 4,
   perMove: 1,
   rewind: true,
-  gap: 0,
+  gap: 30,
   breakpoints: {
-    700: { perPage: 1, }
+    700: {
+      perPage: 1,
+    },
   },
 });
 
 splide.mount();
-
 
 //   SCREEN 4
 // ПРИВЯЗКА КАСТОМНЫХ СТРЕЛОК
@@ -31,8 +32,7 @@ function openPopUp() {
   let inactive = document.querySelector(".inactive");
   inactive.classList.add("off");
   let btnactive = document.querySelector(".btnactive");
-  btnactive.classList.remove("popupbtn")
-  
+  btnactive.classList.remove("popupbtn");
 }
 
 function closePopUp() {
@@ -43,9 +43,9 @@ function closePopUp() {
     let active = document.querySelector(".active");
     active.classList.add("off");
     let inactive = document.querySelector(".inactive");
-    inactive.classList.remove("off")
+    inactive.classList.remove("off");
     let btnactive = document.querySelector(".btnactive");
-    btnactive.classList.add("popupbtn")
+    btnactive.classList.add("popupbtn");
   }
 }
 // popUpCatalog

@@ -5,7 +5,7 @@ var splide = new Splide(".splide.splide3", {
   rewind: true,
   gap: 0,
   breakpoints: {
-    700: { perPage: 1 },
+    700: { perPage: 1, gap: 30 },
   },
 });
 
@@ -110,111 +110,32 @@ btn.addEventListener("click", function () {
 });
 
 // ТАБУЛАТУРА
-var btn = document.getElementById("tab1");
-btn.addEventListener("click", function () {
-  document.querySelector(".tab1").classList.remove("closed");
-  document.querySelector(".tab2").classList.add("closed");
-  document.querySelector(".tab3").classList.add("closed");
-  document.querySelector(".tab4").classList.add("closed");
-  document.querySelector(".tab5").classList.add("closed");
-  document.querySelector(".tab6").classList.add("closed");
-  document.querySelector(".tab15").classList.add("closed");
-  checkFirstTab();
-  checkLastTab();
-});
-var btn = document.getElementById("tab2");
-btn.addEventListener("click", function () {
-  document.querySelector(".tab2").classList.remove("closed");
-  document.querySelector("#tab1").classList.remove("active_tab");
-  document.querySelector(".tab1").classList.add("closed");
-  document.querySelector(".tab3").classList.add("closed");
-  document.querySelector(".tab4").classList.add("closed");
-  document.querySelector(".tab5").classList.add("closed");
-  document.querySelector(".tab6").classList.add("closed");
-  document.querySelector(".tab15").classList.add("closed");
-  checkFirstTab();
-  checkLastTab();
-});
-var btn = document.getElementById("tab3");
-btn.addEventListener("click", function () {
-  document.querySelector(".tab3").classList.remove("closed");
-  document.querySelector("#tab1").classList.remove("active_tab");
-  document.querySelector(".tab1").classList.add("closed");
-  document.querySelector(".tab2").classList.add("closed");
-  document.querySelector(".tab4").classList.add("closed");
-  document.querySelector(".tab5").classList.add("closed");
-  document.querySelector(".tab6").classList.add("closed");
-  document.querySelector(".tab15").classList.add("closed");
-  checkFirstTab();
-  checkLastTab();
-});
-var btn = document.getElementById("tab4");
-btn.addEventListener("click", function () {
-  document.querySelector(".tab4").classList.remove("closed");
-  document.querySelector("#tab1").classList.remove("active_tab");
-  document.querySelector(".tab1").classList.add("closed");
-  document.querySelector(".tab2").classList.add("closed");
-  document.querySelector(".tab3").classList.add("closed");
-  document.querySelector(".tab5").classList.add("closed");
-  document.querySelector(".tab6").classList.add("closed");
-  document.querySelector(".tab15").classList.add("closed");
-  checkFirstTab();
-  checkLastTab();
-});
-var btn = document.getElementById("tab5");
-btn.addEventListener("click", function () {
-  document.querySelector(".tab5").classList.remove("closed");
-  document.querySelector("#tab1").classList.remove("active_tab");
-  document.querySelector(".tab1").classList.add("closed");
-  document.querySelector(".tab2").classList.add("closed");
-  document.querySelector(".tab3").classList.add("closed");
-  document.querySelector(".tab4").classList.add("closed");
-  document.querySelector(".tab6").classList.add("closed");
-  document.querySelector(".tab15").classList.add("closed");
-  checkFirstTab();
-  checkLastTab();
-});
-var btn = document.getElementById("tab6");
-btn.addEventListener("click", function () {
-  document.querySelector(".tab6").classList.remove("closed");
-  document.querySelector("#tab1").classList.remove("active_tab");
-  document.querySelector(".tab1").classList.add("closed");
-  document.querySelector(".tab2").classList.add("closed");
-  document.querySelector(".tab3").classList.add("closed");
-  document.querySelector(".tab4").classList.add("closed");
-  document.querySelector(".tab5").classList.add("closed");
-  document.querySelector(".tab15").classList.add("closed");
-  checkFirstTab();
-  checkLastTab();
-});
-var btn = document.getElementById("tab15");
-btn.addEventListener("click", function () {
-  document.querySelector(".tab15").classList.remove("closed");
-  document.querySelector("#tab1").classList.remove("active_tab");
-  document.querySelector(".tab1").classList.add("closed");
-  document.querySelector(".tab2").classList.add("closed");
-  document.querySelector(".tab3").classList.add("closed");
-  document.querySelector(".tab4").classList.add("closed");
-  document.querySelector(".tab5").classList.add("closed");
-  document.querySelector(".tab6").classList.add("closed");
-  checkFirstTab();
-  checkLastTab();
-});
-// var btn = document.getElementById("close_filter_type");
-// btn.addEventListener("click", function () {
-//   document.querySelector("#filter_type").classList.add("closed");
-// });
+var tabsBtn = document.querySelectorAll(".tab");
+var tabsItems = document.querySelectorAll(".tabs_item");
 
-// var firstpage = document.getElementById("tab1");
+tabsBtn.forEach(function (item) {
+  item.addEventListener("click", function () {
+    var currentBtn = item;
+    var tabID = currentBtn.getAttribute("data-tab");
+    var currentTab = document.querySelector(tabID);
 
-// if (firstpage === document.getElementById("tab1")) {
-//   // Если firstpage является элементом с идентификатором #tab1
-//   document.querySelector(".prevactive").classList.add("closed");
-// } else {
-//   // Если firstpage не является элементом с идентификатором #tab1
-//   document.querySelector(".prev").classList.add("closed");
-//   document.querySelector(".prevactive").classList.remove("closed");
-// }
+    console.log(tabID);
+
+    tabsBtn.forEach(function (item) {
+      item.classList.remove("active_tab");
+    });
+
+    tabsItems.forEach(function (item) {
+      item.classList.add("closed");
+    });
+
+    currentBtn.classList.add("active_tab");
+    currentTab.classList.remove("closed")
+
+    checkFirstTab()
+    checkLastTab()
+  });
+});
 
 function checkFirstTab() {
   let isNotFirstTab = document.querySelector(".tab1.closed");
@@ -236,3 +157,5 @@ function checkLastTab() {
     document.querySelector(".nextinactive").classList.remove("closed");
   }
 }
+
+

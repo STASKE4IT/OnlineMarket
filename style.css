@@ -563,7 +563,7 @@ label {
   text-align: left;
   line-height: 26px;
 }
-#cost2{
+#cost2 {
   margin-top: 10px;
   display: flex;
   width: 181px;
@@ -830,7 +830,7 @@ label {
   }
   .nomerburger {
     display: flex;
-    align-items:center;
+    align-items: center;
   }
   .nomerburger p {
     width: 122px;
