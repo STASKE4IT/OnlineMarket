@@ -202,7 +202,7 @@ label {
 .slide2 {
   height: 100%;
   position: relative;
-  background-image: url(../img/zamok1.svg);
+  background-image: url(./img/zamok1.svg);
   background-size: cover;
   background-position: center;
 }
@@ -450,7 +450,7 @@ label {
 }
 .categories_cards:nth-child(3) .categories_bg {
   grid-area: d;
-  background-image: url(/img/ofice.svg);
+  background-image: url(./img/ofice.svg);
   background-repeat: no-repeat;
   width: calc(41.22vw + 6.4px);
   height: calc(25.6vw + 100.9px);
