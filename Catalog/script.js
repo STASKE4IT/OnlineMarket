@@ -116,10 +116,8 @@ var tabsItems = document.querySelectorAll(".tabs_item");
 tabsBtn.forEach(function (item) {
   item.addEventListener("click", function () {
     var currentBtn = item;
-    var tabID = currentBtn.getAttribute("data-tab");
-    var currentTab = document.querySelector(tabID);
-
-    console.log(tabID);
+    var tabID = Number(currentBtn.innerHTML);
+    var currentTab = tabsItems[tabID - 1];
 
     tabsBtn.forEach(function (item) {
       item.classList.remove("active_tab");
@@ -130,26 +128,39 @@ tabsBtn.forEach(function (item) {
     });
 
     currentBtn.classList.add("active_tab");
-    currentTab.classList.remove("closed")
+    currentTab.classList.remove("closed");
 
-    checkFirstTab()
-    checkLastTab()
+    updateTabsBtns(tabID);
+
+    checkExtremeTab();
   });
 });
 
-function checkFirstTab() {
-  let isNotFirstTab = document.querySelector(".tab1.closed");
-  if (isNotFirstTab) {
+function updateTabsBtns(num) {
+  let max = tabsBtn.length;
+  let min = 1;
+  if (max - num < 3) {
+    // 13 14 15
+    tabsBtn.forEach(function (item) {});
+  } else if (num - min < 3) {
+    // 1 2 3
+  } else {
+  }
+}
+
+// ФУНКЦИЯ ПОГАЩЕНИЯ СТРЕЛОК ТАБУЛАЦИИ
+function checkExtremeTab() {
+  let FirstTab = document.querySelector(".tab1.closed");
+  let LastTab = document.querySelector(".tab15.closed");
+
+  if (FirstTab) {
     document.querySelector(".prev").classList.add("closed");
     document.querySelector(".prevactive").classList.remove("closed");
   } else {
     document.querySelector(".prevactive").classList.add("closed");
     document.querySelector(".prev").classList.remove("closed");
   }
-}
-function checkLastTab() {
-  let isNotLastTab = document.querySelector(".tab15.closed");
-  if (isNotLastTab) {
+  if (LastTab) {
     document.querySelector(".nextinactive").classList.add("closed");
     document.querySelector(".nextactive").classList.remove("closed");
   } else {
@@ -157,5 +168,3 @@ function checkLastTab() {
     document.querySelector(".nextinactive").classList.remove("closed");
   }
 }
-
-

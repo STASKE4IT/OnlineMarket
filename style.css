@@ -809,12 +809,21 @@ label {
 .closed {
   display: none;
 }
+
+#filter_frame.closed {
+  display: block;
+}
 /* PopUpCatalog */
 .splide__arrow {
   display: none;
 }
 
 @media (max-width: 700px) {
+
+  #filter_frame.closed {
+    display: none;
+  }
+
   .logo {
     display: none;
   }
